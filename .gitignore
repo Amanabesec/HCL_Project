@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+.DS_Store
+*.pkl
+*.pickle
+node_modules/
+.idea/
+.vscode/
+~$*

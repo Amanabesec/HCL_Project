@@ -1,0 +1,13 @@
+Install Required Libraries
+Import Libraries
+Load & Explore the Dataset
+Exploratory Data Analysis (EDA)
+Data Preprocessing & Text Cleaning
+Label Encoding
+Train-Test Split & TF-IDF Vectorization
+Model Training & Comparison
+Model Evaluation
+Save the Model & Vectorizer (Pickle)
+Build Chatbot Response Logic
+Streamlit Deployment
+Run the Streamlit App
