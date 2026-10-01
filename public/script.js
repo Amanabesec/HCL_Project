@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('send-btn');
     const typingIndicator = document.getElementById('typing-indicator');
 
-    const API_URL = 'http://localhost:5000/api/chat';
+    const API_URL = '/api/chat';
 
     const suggestions = [
         'How to register for courses?',
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Escape HTML to prevent XSS
     function escapeHTML(str) {
-        return str.replace(/[&<>'"]/g, 
+        return str.replace(/[&<>'"]/g,
             tag => ({
                 '&': '&amp;',
                 '<': '&lt;',

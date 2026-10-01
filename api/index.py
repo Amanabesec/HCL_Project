@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics.pairwise import cosine_similarity
 import logging
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), '..', 'public'))
 CORS(app)
 logging.basicConfig(level=logging.INFO)
 
@@ -21,7 +21,7 @@ def init_app():
     global df, vectorizer, model
     try:
         # Load dataset
-        dataset_path = os.path.join(os.path.dirname(__file__), '../AI-Powered Chatbot.xlsx')
+        dataset_path = os.path.join(os.path.dirname(__file__), 'AI-Powered Chatbot.xlsx')
         logging.info(f"Loading dataset from {dataset_path}")
         df = pd.read_excel(dataset_path)
         
@@ -109,6 +109,18 @@ def chat():
         }), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+# Serve frontend static files
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        index_path = os.path.join(app.static_folder, 'index.html')
+        if os.path.exists(index_path):
+            return send_from_directory(app.static_folder, 'index.html')
+        return jsonify({"error": "Frontend not found"}), 404
 
 if __name__ == '__main__':
     app.run(port=5000, host='0.0.0.0')
