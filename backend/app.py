@@ -21,7 +21,7 @@ def init_app():
     global df, vectorizer, model
     try:
         # Load dataset
-        dataset_path = os.path.join(os.path.dirname(__file__), '../AI-Powered Chatbot.xlsx')
+        dataset_path = os.path.join(os.path.dirname(__file__), 'AI-Powered Chatbot.xlsx')
         logging.info(f"Loading dataset from {dataset_path}")
         df = pd.read_excel(dataset_path)
         
